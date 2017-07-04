@@ -1,0 +1,18 @@
+version 0.0.1
+image: Visual Studio 2017
+
+environment:
+  - DOCKER_USER:
+    - secure: zYh2E1Ev8iysKYqh1JQnjA==
+  - DOCKER_PASS:
+    - secure: fzKLKWlgyXg+GYPF9tvvrA==
+
+install:
+  - docker version
+
+build-script:
+  - docker build -t solthoth/dotnetnuke:latest .
+
+deploy-script:
+  - docker login -u="$env:DOCKER_USER" -p="$env:DOCKER_PASS"
+  - docker push solthoth/dotnetnuke
