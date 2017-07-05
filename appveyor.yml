@@ -12,9 +12,11 @@ install:
 build_script:
   docker build -t solthoth/dotnetnuke:latest .
 before_deploy:
-  docker login -u=$env:DOCKER_USER -p=$env:DOCKER_PASS
+  docker login -u $env:DOCKER_USER -p $env:DOCKER_PASS
 deploy_script:
   docker push solthoth/dotnetnuke
+after_deploy:
+  docker logout
 
 notifications:
   provider: Slack
