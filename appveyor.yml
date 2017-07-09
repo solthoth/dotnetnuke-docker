@@ -10,11 +10,13 @@ environment:
 install:
   docker version
 build_script:
-  docker build -t solthoth/dotnetnuke:latest .
+  - docker build -t solthoth/dotnetnuke:latest .
+  - ps: docker tag solthoth:dotnetnuke:latest solthoth/dotnetnuke:"$env:APPVEYOR_BUILD_VERSION"
 before_deploy:
   ps: docker login -u "$env:DOCKER_USER" -p "$env:DOCKER_PASS"
 deploy_script:
-  docker push solthoth/dotnetnuke
+  - docker push solthoth/dotnetnuke:latest
+  - docker push solthoth/dotnetnuke:"$env:APPVEYOR_BUILD_VERSION"
 after_deploy:
   docker logout
 
