@@ -1,5 +1,5 @@
 *
 
 # Ignore All Except:
-setup.ps1
-LICENSE
+!setup.ps1
+!LICENSE

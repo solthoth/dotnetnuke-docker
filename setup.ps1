@@ -78,3 +78,5 @@ Configuration DNNSetup
 DNNSetup
 
 Start-DscConfiguration -Path .\DNNSetup -Wait -verbose -Force
+
+Expand-Archive -LiteralPath $zipFile -DestinationPath $websiteDir
